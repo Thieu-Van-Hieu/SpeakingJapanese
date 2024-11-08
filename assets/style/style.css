@@ -91,10 +91,6 @@ p {
     transition: background-color 0.3s ease;
 }
 
-p:hover {
-    background-color: #e0e0f5;
-}
-
 /* Tạo kiểu cho các phần có ảnh */
 img {
     display: block;
