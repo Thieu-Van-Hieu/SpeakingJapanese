@@ -129,14 +129,22 @@ const image_src = [
         "./assets/img/mariyamu.png",
         "./assets/img/karurosu.jpg",
         "./assets/img/suzuki.jpg",
+        "./assets/img/piitaa.jpg",
+        "./assets/img/juhee.jpg",
     ],
     ["./assets/img/suupaa.png"],
     [
         "./assets/img/toshokan.png",
         "./assets/img/yuubinkyoku.jpg",
-        "./assets/img/taiikukan.jpg",
+        "./assets/img/taiikukan1.jpg",
+        "./assets/img/taiikukan2.jpg",
     ],
-    ["./assets/img/tokei.jpg", "./assets/img/Tshatsu.jpg"],
+    [
+        "./assets/img/tokei.jpg",
+        "./assets/img/Tshatsu.jpg",
+        "./assets/img/kamera.jpg",
+        "./assets/img/keitaidenwa.jpg",
+    ],
 ];
 
 const talking_with_image = [
