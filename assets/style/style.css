@@ -1,3 +1,107 @@
-.reading {
-    width: 60%;
+/* Đặt phông chữ và nền cho toàn bộ trang */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f5;
+    color: #333;
+    margin: 0;
+    padding: 20px;
+}
+
+/* Tạo kiểu cho tiêu đề trang */
+header {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 30px 0;
+    margin-bottom: 30px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+    margin: 0;
+    font-size: 2em;
+}
+
+/* Kiểu cho phần main */
+main {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Căn giữa và làm nổi bật nút */
+button {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    margin: 20px 0;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Cách điệu cho tiêu đề câu hỏi */
+h3 {
+    color: #007bff;
+    font-size: 1.3em;
+    margin-top: 20px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #f0f0f5;
+}
+
+/* Danh sách có đánh số */
+ol {
+    list-style-type: decimal;
+    padding-left: 20px;
+    margin: 20px 0;
+}
+
+/* Các phần tử trong danh sách */
+li {
+    margin: 25px 0;
+    padding-left: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Đặt kiểu cho đoạn văn */
+p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: #555;
+    margin: 10px 0;
+    padding: 10px;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+p:hover {
+    background-color: #e0e0f5;
+}
+
+/* Tạo kiểu cho các phần có ảnh */
+img {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    margin: 20px auto;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }

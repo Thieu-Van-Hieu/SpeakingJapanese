@@ -8,23 +8,41 @@
     <script src="./assets/script/script.js"></script>
 </head>
 <body>
-    <button onclick="random()">Tạo test</button>
-    <ol>
-        <li>
-            <h3>Đọc câu văn</h3>
-            <p class="reading"></p>
-        </li>
+    <header>
+        <h1>Test Speaking Japanese</h1>
+    </header>
 
-        <li>
-            <h3>Trả lời câu hỏi không tranh</h3>
-            <p class="talking-without-image"></p>
-        </li>
+    <main>
+        <button onclick="random()">Tạo test</button>
+        <ol>
+            <li>
+                <h3>Đọc câu văn</h3>
+                <p class="reading" onclick="speakText(this)"></p>
+            </li>
 
-        <li>
-            <h3>Trả lời câu hỏi với tranh</h3>
-            <img src="" alt="">
-            <p class="talking-with-image"></p>
-        </li>
-    </ol>
+            <li>
+                <h3>Trả lời câu hỏi không tranh</h3>
+                <p class="talking-without-image" onclick="speakText(this)"></p>
+            </li>
+
+            <li>
+                <h3>Trả lời câu hỏi với tranh</h3>
+                <img src="" alt="">
+                <ol>
+                    <li>
+                        <p class="talking-with-image-1" onclick="speakText(this)"></p>
+                    </li>
+    
+                    <li>
+                        <p class="talking-with-image-2" onclick="speakText(this)"></p>
+                    </li>
+    
+                    <li>
+                        <p class="talking-with-image-3" onclick="speakText(this)"></p>
+                    </li>
+                </ol>
+            </li>
+        </ol>
+    </main>
 </body>
 </html>

@@ -121,21 +121,16 @@ const talking_with_image = [
 ];
 
 function random() {
-    const reading_element = document.querySelector(".reading");
-    reading_element.innerHTML =
+    document.querySelector(".reading").innerHTML =
         reading[Math.floor(Math.random() * reading.length)];
 
-    const talking_without_image_element = document.querySelector(
-        ".talking-without-image"
-    );
-    talking_without_image_element.textContent =
+    document.querySelector(".talking-without-image").textContent =
         talking_without_image[
             Math.floor(Math.random() * talking_without_image.length)
         ];
 
     const index_img = Math.floor(Math.random() * image_src.length);
-    const image_element = document.querySelector("img");
-    image_element.src =
+    document.querySelector("img").src =
         image_src[index_img][
             Math.floor(Math.random() * image_src[index_img].length)
         ];
@@ -147,19 +142,39 @@ function random() {
         );
         if (!question_random.includes(index)) question_random.push(index);
     }
+    document.querySelector(".talking-with-image-1").innerHTML =
+        talking_with_image[index_img][question_random[0]];
+    document.querySelector(".talking-with-image-2").innerHTML =
+        talking_with_image[index_img][question_random[1]];
+    document.querySelector(".talking-with-image-3").innerHTML =
+        talking_with_image[index_img][question_random[2]];
+}
 
-    let question = "";
-    for (let i = 0; i < 3; i++) {
-        question +=
-            i +
-            1 +
-            ". " +
-            talking_with_image[index_img][question_random[i]] +
-            "<br>";
+let isSpeaking = false; // Kiểm tra trạng thái đang đọc
+
+function speakText(element) {
+    if (isSpeaking) {
+        // Dừng đọc nếu đang phát âm
+        window.speechSynthesis.cancel();
+        isSpeaking = false;
     }
 
-    const talking_with_image_element = document.querySelector(
-        ".talking-with-image"
-    );
-    talking_with_image_element.innerHTML = question;
+    if ("speechSynthesis" in window) {
+        let text = element.innerHTML
+            .replace(/<rt>.*?<\/rt>/g, "")
+            .replace(/<\/?[^>]+(>|$)/g, "");
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "ja-JP";
+
+        // Cập nhật trạng thái và xử lý khi kết thúc
+        isSpeaking = true;
+        utterance.onend = () => {
+            isSpeaking = false;
+        };
+
+        // Phát âm
+        window.speechSynthesis.speak(utterance);
+    } else {
+        alert("Trình duyệt của bạn không hỗ trợ Text-to-Speech");
+    }
 }
