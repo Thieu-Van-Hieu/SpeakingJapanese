@@ -110,6 +110,24 @@ const reading = [
     "私は 日本語の 本を かいました。この本は 800円でした。ほかにも 300円と 600円の本もあります。学校でつかうノートは3さつで3000円、ペンは5本で8000円です。月曜日から金曜日まで学校にいきます。",
     "私はまいつき、日本語のクラスに3000円をはらいます。学校のじゅぎょうは月曜日と水曜日にあります。あさの九時から はじまり、十一時におわります。土曜日と日曜日はじゅぎょうがありませんので、ともだちと800円のランチをたべに いきます。",
     "私はまいつき、日本語のクラスに3000円をはらいます。学校のじゅぎょうは月曜日と水曜日にあります。あさの九時からはじまり、十一時におわります。土曜日と日曜日はじゅぎょうがありませんので、ともだちと800円のランチをたべにいきます。",
+    `私は<ruby>日本語<rt>にほんご</rt></ruby>学校<rt>がっこう</rt>の学生<rt>がくせい</rt>です。<ruby>月曜日<rt>げつようび</rt></ruby>から<ruby>金曜日<rt>きんようび</rt></ruby>まで、学校へ<ruby>行<rt>い</rt></ruby>きます。
+
+<ruby>朝<rt>あさ</rt></ruby>9時から12時半<rt>はん</rt>まで学校で<ruby>日本語<rt>にほんご</rt></ruby>を<ruby>勉強<rt>べんきょう</rt></ruby>します。
+
+<ruby>週末<rt>しゅうまつ</rt></ruby>、<ruby>図書館<rt>としょかん</rt></ruby>へ<ruby>行<rt>い</rt></ruby>きます。<ruby>図書館<rt>としょかん</rt></ruby>で本を<ruby>読<rt>よ</rt></ruby>みます。
+<ruby>水曜日<rt>すいようび</rt></ruby>と<ruby>土曜日<rt>どようび</rt></ruby>、コンビニでアルバイトをします。
+4時から8時まで<ruby>働<rt>はたら</rt></ruby>きます。
+`,
+    "はじめまして、私は きむらです。日本人です。ふじみ 大学の きょうしです。21才です。誕生日は 7月17日です。しゅみはおんがく と どくしょです。どうぞ よろしくおねがいします。",
+    "はじめまして。私はダニエルです。アメリカ人です。18さいです。ABEの しゃいんです。しゅみは スポーツと りょうりです。どうぞ よろしくおねがいします。",
+    "はじめまして。わたしは メアリーです。イタリア人です。30さいです。たんじょうびは 1がつ10日です。しゅみは すいえいと おんがくです。どうぞ よろしくおねがいします。",
+    "ワットさんと ワンさんは 18才です。誕生日は おなじです。6月8日です。ワットのしゅみは サッカーと りょこうです。ワンさんのしゅみは りょこうと おんがくです。",
+    "はじめまして。私は トムです。アメリカ人です。19才です。誕生日は9月14日です。学生です。しゅみは テニスと すいえいです。どうぞ よろしくおねがいします。",
+    "はじめまして。私は メアりです。オーストラリア人です。26才です。誕生日は 1月10日です。ABEのしゃいんです。しゅみは おんがくと どくしょです。どうぞ よろしくおねがいします。",
+    "学校は 月曜日から 土曜日までです。私はまいあさ、パンを たべます。コーヒーやジュースなどを のみます。それから、学校へいきます。日曜日は やすみです。私は日曜日どこも いきません。うちで 11時まで ねます。それから、りょうりを します。本を よみます。",
+    "今年は2024年です。これは 学校の 一年の スケジュールです。4月20日は木曜日です。おはなみをします。5月17日は金曜日です。3時に日本語のテストをします。なつやすみは7月1日から 8月30日まで です。7月8日は土曜日です。ごぜん6時から ふじさん へ いきます。8月15日は日曜日です。 ごご7時から学校で花火をみます。9時30分まで パーティーをします。日本語のじゅぎょうは 9月20日からです。月曜日と 水曜日です。",
+    "私はスーパーで カメラを かいました。イタリアのです。2600円です。私と ダニエルさんは 9月に りょこうをします。日本へ いきます。日本でさくらを みます。しゃしんを とります。かばんやさいふや Tシャツや ズボンなどを かいます。",
+    "マリヤムさんは レストランで さかなを 二つとおやこどんを 一つ たべました。ビールを 三つのみました。それから、ごご 百円ショップ へいきました。そこで たまごを 十 と みずを五つ かいました。よる 7時に うちへ かえりました。10時30分に ねました。",
 ];
 
 const talking_without_image = [
@@ -181,18 +199,20 @@ const talking_with_image = [
 ];
 
 function random() {
+    isFormat = false;
+
     document.querySelector(".reading").innerHTML =
         reading[Math.floor(Math.random() * reading.length)];
 
     document.querySelector(".talking-without-image").textContent =
         talking_without_image[
-            Math.floor(Math.random() * talking_without_image.length)
+        Math.floor(Math.random() * talking_without_image.length)
         ];
 
     const index_img = Math.floor(Math.random() * image_src.length);
     document.querySelector("img").src =
         image_src[index_img][
-            Math.floor(Math.random() * image_src[index_img].length)
+        Math.floor(Math.random() * image_src[index_img].length)
         ];
 
     let question_random = [];
@@ -239,6 +259,9 @@ function speakText(element) {
     }
 }
 
+let isFormat = false;
+let chars;
+
 function checkReading(className) {
     if (!("webkitSpeechRecognition" in window)) {
         alert("Trình duyệt không hỗ trợ nhận diện giọng nói.");
@@ -250,15 +273,39 @@ function checkReading(className) {
     recognition.interimResults = false;
 
     const element = document.querySelector(`.${className}`);
-
-    // Lấy câu tiếng Nhật từ element và chia thành các ký tự (giả định không có dấu cách)
-    const correctSentence = element.textContent.trim();
-    const chars = correctSentence.split("");
+    element.querySelectorAll(".word").forEach((element) => {
+        if (element.style.color) element.style.color = "";
+    });
 
     // Thay thế nội dung HTML với mỗi ký tự bọc trong thẻ span
-    element.innerHTML = chars
-        .map((char) => `<span class="word">${char}</span>`)
-        .join("");
+    if (!isFormat) {
+        chars = element.innerHTML
+            .split(/(<ruby>.*?<\/ruby>)/)
+            .filter(Boolean)
+            .map((string) => {
+                // Kiểm tra xem string có chứa thẻ <ruby> không
+                if (/<ruby>.*?<\/ruby>/.test(string)) {
+                    // Giữ nguyên nếu chứa <ruby>
+                    return string;
+                } else {
+                    // Tách thành từng ký tự nếu không chứa <ruby>
+                    return [...string];
+                }
+            })
+            .flat(); // Dùng flat để làm phẳng mảng nếu cần
+
+        element.innerHTML = chars
+            .map((char) => `<span class="word">${char}</span>`)
+            .join("");
+        isFormat = true;
+    }
+
+    const words = chars.map((char) =>
+        char
+            .replace(/<rt>.*?<\/rt>/g, "")
+            .replace(/<\/?[^>]+(>|$)/g, "")
+            .replace(/<\/.ruby>/)
+    );
 
     recognition.start();
 
@@ -267,9 +314,11 @@ function checkReading(className) {
         const userChars = userSentence.split(""); // Chia câu người dùng nói thành ký tự
 
         // Đánh dấu từng ký tự là đúng hoặc sai
-        chars.forEach((char, index) => {
+        words.forEach((char, index) => {
             const wordElement = element.querySelectorAll(".word")[index];
             const userChar = userChars[index];
+
+            console.log(userChar + ": " + char);
 
             if (userChar === char) {
                 wordElement.style.color = "#71be34"; // Đúng, bôi xanh
